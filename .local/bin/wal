@@ -1,0 +1,9 @@
+#!/bin/sh
+
+DIR="$HOME/.local/bin/wallpapers/Future/"
+
+WAL="$(ls $DIR/*.jpg | shuf -n1)"
+
+cat $WAL > $DIR/current-wallpaper.jpg
+
+feh --bg-scale $DIR/current-wallpaper.jpg
