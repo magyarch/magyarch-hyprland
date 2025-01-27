@@ -1,0 +1,2 @@
+# magyarch-hyprland
+hypr
