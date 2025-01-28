@@ -27,8 +27,8 @@
 				  :year calendar_year))))
 
 (defwindow calendar
-	:geometry (geometry :x "-230px"
-			    :y "30px"
+	:geometry (geometry :x "-20px"
+			    :y "35px"
 			    :width "275px"
 			    :height "190px"
 			    :anchor "top right")
@@ -51,14 +51,14 @@
       (button :class "btn"
               :tooltip "Reboot"
               :onclick "eww close powermenu && reboot"
-              "勒")
+              "")
     )
     (box :class "exit-btn-box"
          :orientation "h"
       (button :class "btn"
               :tooltip "Logout"
-              :onclick "pkill spectrwm"
-              "")
+              :onclick "i3-msg exit"
+              "")
     )
   )
 )
@@ -141,16 +141,15 @@
 	(box :class "imagebox"
 		 (transform :scale_x "50px"
 			 (image :class "image"
-					:path "/home/xeoncpu/.local/bin/wallpapers/Future/fefe.jpg"
-					:image-width 175
-					:image-height 145))))
+					:path "/home/xeoncpu/Pictures/picture.png"
+					:image-width 140
+					:image-height 140))))
 
 (defwindow image
-	:geometry (geometry :x "-8px"
-						:y "60px"
-						:width "196px"
-						:height "145px"
-					    :anchor "top right")
+	:geometry (geometry :x "168px"
+						:y "410px"
+						:width "140px"
+						:height "140px")
 	:wm-ignore true
 (imagewidget))
 

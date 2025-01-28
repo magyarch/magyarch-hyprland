@@ -1,56 +1,56 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 
 
 # Dmenu script for editing some of my more frequently edited config files.
 
 
-declare options=("alias
-bash
-spectrwm
-profile
-vifm
+declare options=("aliasrc
+zshrc
+bspwmrc
+nixconfig
+.profile
+sxhkdrc
+vifmrc
 Xresources
-barconf
-sxhkd
-xprofile
+.xprofile
 quit")
 
-choice=$(echo -e "${options[@]}" | dmenu -i -c -g 1 -l 10 -nb '#000000' -nf '#c3cdc8' -sb '#947cc3' -fn 'JetBrains Mono Nerd Font-12' -p 'Edit a config file: ')
+choice=$(echo -e "${options[@]}" | dmenu -p 'Edit files: ')
 
 case "$choice" in
 	quit)
 		echo "Program terminated." && exit 1
 	;;
-	alias)
+	aliasrc)
 		choice="$HOME/.config/aliasrc"
 	;;
-	bash)
-		choice="$HOME/.bashrc"
+	zshrc)
+		choice="$HOME/.config/zsh/.zshrc"
 	;;
-	spectrwm)
-		choice="$HOME/.config/spectrwm/spectrwm.conf"
+	bspwmrc)
+		choice="$HOME/.config/bspwm/bspwmrc"
 	;;
-	profile)
+	.profile)
 		choice="$HOME/.profile"
 	;;
-	vifm)
+	sxhkdrc)
+	        choice="$HOME/.config/sxhkd/sxhkdrc"
+	;;
+	vifmrc)
 		choice="$HOME/.config/vifm/vifmrc"
+	;;
+	nixconfig)
+		choice="/etc/nixos/configuration.nix"
 	;;
 	Xresources)
 		choice="$HOME/.Xresources"
 	;;
-	barconf)
-		choice="$HOME/.config/spectrwm/baraction.sh"
-	;;
-	sxhkd)
-		choice="$HOME/.config/sxhkd/sxhkdrc"
-	;;
-	xprofile)
+    xprofile)
 		choice="$HOME/.xprofile"
 	;;
 	*)
 		exit 1
 	;;
 esac
-subl -c "$choice"
+kitty -e nvim  "$choice"
